@@ -2,7 +2,7 @@
   "name": "todo-app",
   "author": "JaeHong Hwang",
   "version": "0.0.0",
-  "main": "electron/electron.js",
+  "main": "app/electron.ts",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

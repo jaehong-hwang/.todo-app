@@ -1,17 +1,18 @@
 // electron/electron.js
 const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 const isDev = process.env.IS_DEV == "true" ? true : false;
 
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1140,
+    height: 750,
+    titleBarStyle: 'hidden',
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.ts'),
     },
   });
 
@@ -48,3 +49,5 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
+ipcMain.on('app:quit', () => { app.quit() })
