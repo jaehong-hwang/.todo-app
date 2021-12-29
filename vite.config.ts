@@ -8,5 +8,10 @@ export default defineConfig({
   plugins: [vue()],
   alias: [
     {find: "@", replacement: path.resolve(__dirname, 'src')}
-  ]
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: { additionalData: `@import "@/assets/scss/colors.scss";` },
+    },
+  },
 })

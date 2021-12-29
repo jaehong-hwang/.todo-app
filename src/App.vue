@@ -17,36 +17,8 @@ export default defineComponent({
 })
 </script>
 
-<style>
-@font-face {
-  font-family: 'noto-sans-black';
-  src: url('./assets/fonts/Noto_Sans_KR/NotoSansKR-Black.otf');
-}
-
-@font-face {
-  font-family: 'noto-sans-bold';
-  src: url('./assets/fonts/Noto_Sans_KR/NotoSansKR-Bold.otf');
-}
-
-@font-face {
-  font-family: 'noto-sans-medium';
-  src: url('./assets/fonts/Noto_Sans_KR/NotoSansKR-Medium.otf');
-}
-
-@font-face {
-  font-family: 'noto-sans';
-  src: url('./assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf');
-}
-
-@font-face {
-  font-family: 'noto-sans-light';
-  src: url('./assets/fonts/Noto_Sans_KR/NotoSansKR-Light.otf');
-}
-
-@font-face {
-  font-family: 'noto-sans-thin';
-  src: url('./assets/fonts/Noto_Sans_KR/NotoSansKR-Thin.otf');
-}
+<style lang="scss">
+@import '@/assets/scss/fonts.scss';
 
 * {
   margin: 0;
@@ -64,7 +36,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000;
-  background: #fafafa;
+  background: $white;
   width: 100%;
   height: 100%;
 }
