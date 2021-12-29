@@ -12,10 +12,11 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h1 {
   font-family: 'noto-sans-bold';
   font-size: 28px;
   line-height: 28px;
+  color: $black;
 }
 </style>

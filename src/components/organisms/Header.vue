@@ -1,14 +1,14 @@
 <template>
   <header>
-    <span>hanberger</span>
     <Logo />
-    <span>add</span>
+    <Hamberger />
   </header>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import Logo from './Logo.vue'
+import Logo from '@/components/atoms/Logo.vue'
+import Hamberger from '@/components/atoms/Hamberger.vue'
 
 export default defineComponent({
   setup () {
@@ -20,16 +20,19 @@ export default defineComponent({
   },
   components: {
     Logo,
+    Hamberger,
   },
 })
 </script>
 
 <style lang="scss" scoped>
 header {
-  display: flex;
   padding: 28px 30px 0;
   height: 43px;
-  align-content: center;
-  justify-content: space-between;
+  line-height: 43px;
+
+  * {
+    display: inline-block;
+  }
 }
 </style>
