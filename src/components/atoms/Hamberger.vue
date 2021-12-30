@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ active, hamberger: true }">
+  <div :class="{ active: active, hamberger: true }">
     <div class="line line-top"></div>
     <div class="line line-middle"></div>
     <div class="line line-bottom"></div>
@@ -20,14 +20,46 @@ export default defineComponent({
 .hamberger {
   width: 25px;
   height: 25px;
-}
+  position: relative;
+  overflow: hidden;
 
-.line {
-  height: 2px;
-  background: $black;
+  .line {
+    width: 100%;
+    height: 2px;
+    background: $black;
+    position: absolute;
+    left: 0;
+    transition: all .3s;
 
-  &:not(:last-child) {
-    margin-bottom: 5px;
+    &-top {
+      bottom: 18.5px;
+    }
+
+    &-middle {
+      top: 11.5px;
+    }
+
+    &-bottom {
+      top: 18.5px;
+    }
+  }
+
+  &.active .line {
+    background: $white;
+
+    &-top {
+      width: 12px;
+      transform: rotate(-45deg);
+      left: -1px;
+      bottom: 16px;
+    }
+
+    &-bottom {
+      width: 12px;
+      transform: rotate(45deg);
+      left: -1px;
+      top: 17px;
+    }
   }
 }
 </style>

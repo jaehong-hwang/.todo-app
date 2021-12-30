@@ -1,7 +1,7 @@
 <template>
   <header>
     <Logo />
-    <Hamberger />
+    <Hamberger id="hamberger" :active="menuOpened" @click="menuOpened = !menuOpened" />
   </header>
 </template>
 
@@ -12,10 +12,10 @@ import Hamberger from '@/components/atoms/Hamberger.vue'
 
 export default defineComponent({
   setup () {
-    const count = ref(0)
+    const menuOpened = ref(false)
 
     return {
-      count,
+      menuOpened,
     }
   },
   components: {
@@ -33,6 +33,11 @@ header {
 
   * {
     display: inline-block;
+  }
+
+  #hamberger {
+    float: right;
+    cursor: pointer;
   }
 }
 </style>
