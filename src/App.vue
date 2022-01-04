@@ -64,11 +64,11 @@ html, body {
 
 .menu.slide-left {
   &-enter-active {
-    transition: width .4s ease-out;
+    transition: width .25s ease-out;
   }
 
   &-leave-active {
-    transition: width .2s ease-in;
+    transition: width .25s ease-in;
   }
 
   &-enter-from, &-leave-to {
