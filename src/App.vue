@@ -1,18 +1,30 @@
 <template>
-  <div>
-    <Header />
+  <div id="wrap">
+    <transition appear name="slide-left">
+      <Menu v-show="menuOpened" />
+    </transition>
+    <section id="app-wrap" :class="{ 'menu-opened': menuOpened }">
+      <Header :menuOpened="menuOpened" @toggle-menu="menuOpened = !menuOpened"/>
+    </section>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import Header from '@/components/organisms/Header.vue'
+import Menu from '@/components/organisms/Menu.vue'
 
 export default defineComponent({
   setup() {
+    const menuOpened = ref(false)
+
+    return {
+      menuOpened,
+    }
   },
   components: {
     Header,
+    Menu,
   },
 })
 </script>
@@ -39,5 +51,28 @@ html, body {
   background: $white;
   width: 100%;
   height: 100%;
+}
+
+#wrap {
+  display: flex;
+  min-height: 100%;
+
+  #app-wrap {
+    flex: 1;
+  }
+}
+
+.menu.slide-left {
+  &-enter-active {
+    transition: width .4s ease-out;
+  }
+
+  &-leave-active {
+    transition: width .2s ease-in;
+  }
+
+  &-enter-from, &-leave-to {
+    width: 0;
+  }
 }
 </style>

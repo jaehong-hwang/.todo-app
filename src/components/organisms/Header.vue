@@ -1,7 +1,7 @@
 <template>
   <header>
     <Logo />
-    <Hamberger id="hamberger" :active="menuOpened" @click="menuOpened = !menuOpened" />
+    <Hamberger id="hamberger" :active="menuOpened" @click="$emit('toggle-menu')" />
   </header>
 </template>
 
@@ -11,12 +11,10 @@ import Logo from '@/components/atoms/Logo.vue'
 import Hamberger from '@/components/atoms/Hamberger.vue'
 
 export default defineComponent({
+  props: {
+    menuOpened: Boolean,
+  },
   setup () {
-    const menuOpened = ref(false)
-
-    return {
-      menuOpened,
-    }
   },
   components: {
     Logo,
@@ -27,7 +25,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 header {
-  padding: 28px 30px 0;
+  padding: 38px 30px 0;
   height: 43px;
   line-height: 43px;
 
@@ -36,7 +34,9 @@ header {
   }
 
   #hamberger {
-    float: right;
+    position: fixed;
+    top: 40px;
+    left: 42px;
     cursor: pointer;
   }
 }
