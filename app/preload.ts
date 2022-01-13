@@ -4,8 +4,7 @@ const {ipcRenderer, contextBridge} = require('electron');
 contextBridge.exposeInMainWorld('ipcRenderer', ipcRenderer)
 
 contextBridge.exposeInMainWorld('darkMode', {
-  toggle: () => ipcRenderer.invoke('dark-mode:toggle'),
-  check: () => ipcRenderer.invoke('dark-mode:check')
+  toggle: () => ipcRenderer.invoke('dark-mode:toggle')
 })
 
 

@@ -36,10 +36,6 @@ function createWindow() {
     }
     return nativeTheme.shouldUseDarkColors
   })
-  
-  ipcMain.handle('dark-mode:check', () => {
-    return nativeTheme.shouldUseDarkColors
-  })
 }
 
 // This method will be called when Electron has finished
