@@ -1,3 +1,15 @@
-$white: #fafafa;
-$black: #2b272b;
-$gray: #D4D3D4;
+:root {
+  --white: #fafafa;
+  --black: #2b272b;
+  --gray: #D4D3D4;
+  --primary: #449AA6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: #2b272b;
+    --black: #fafafa;
+    --gray: #3b343b;
+    --primary: #449AA6;
+  }
+}

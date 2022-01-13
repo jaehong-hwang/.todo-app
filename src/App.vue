@@ -35,6 +35,8 @@ export default defineComponent({
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  transition: color, background .3s;
 }
 
 html, body {
@@ -48,7 +50,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #000;
-  background: $white;
+  background: var(--white);
   width: 100%;
   height: 100%;
 }

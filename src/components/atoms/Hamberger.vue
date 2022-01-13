@@ -26,7 +26,7 @@ export default defineComponent({
   .line {
     width: 100%;
     height: 2px;
-    background: $black;
+    background: var(--black);
     position: absolute;
     left: 0;
     transition: all .3s;
@@ -45,7 +45,7 @@ export default defineComponent({
   }
 
   &.active .line {
-    background: $white;
+    background: var(--white);
 
     &-top {
       width: 12px;

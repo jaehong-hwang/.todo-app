@@ -17,6 +17,6 @@ h1 {
   font-family: 'noto-sans-bold';
   font-size: 28px;
   line-height: 28px;
-  color: $black;
+  color: var(--black);
 }
 </style>

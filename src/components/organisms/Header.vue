@@ -2,13 +2,19 @@
   <header>
     <Logo />
     <Hamberger id="hamberger" :active="menuOpened" @click="$emit('toggle-menu')" />
+    <Suspense>
+      <template #default>
+        <DarkModeSwitch id="switch" />
+      </template>
+    </Suspense>
   </header>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import Logo from '@/components/atoms/Logo.vue'
 import Hamberger from '@/components/atoms/Hamberger.vue'
+import DarkModeSwitch from '@/components/molecules/DarkModeSwitch.vue'
 
 export default defineComponent({
   props: {
@@ -19,6 +25,7 @@ export default defineComponent({
   components: {
     Logo,
     Hamberger,
+    DarkModeSwitch,
   },
 })
 </script>
@@ -38,6 +45,12 @@ header {
     top: 40px;
     left: 42px;
     cursor: pointer;
+  }
+
+  #switch {
+    position: fixed;
+    top: 40px;
+    right: 42px;
   }
 }
 </style>
