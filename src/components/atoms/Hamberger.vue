@@ -60,6 +60,10 @@ export default defineComponent({
       left: -1px;
       top: 17px;
     }
+
+    @media (prefers-color-scheme: dark) {
+      background: var(--black);
+    }
   }
 }
 </style>
