@@ -18,5 +18,6 @@ h1 {
   font-size: 28px;
   line-height: 28px;
   color: var(--black);
+  cursor: default;
 }
 </style>
