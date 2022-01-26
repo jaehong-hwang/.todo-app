@@ -1,18 +1,18 @@
 <template>
   <section class="menu">
-    <MenuSections title="Directories" :menu="directories" @update="directoryUpdate" />
+    <MenuSections title="Directories" :menu="directories" :default="currentDirectory" @update="directoryUpdate" />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
-import { directoryFetch } from '@/todo'
+import { directoryFetch, setCurrentDirectory, currentDirectory } from '@/todo'
 
 export default defineComponent({
   setup() {
     const directoryUpdate = (val: String) => {
-      console.log(val)
+      setCurrentDirectory(val)
     }
 
     const directories = ref([{}])
@@ -21,6 +21,7 @@ export default defineComponent({
     return {
       directories,
       directoryUpdate,
+      currentDirectory,
     }
   },
   components: {

@@ -19,6 +19,7 @@ p {
   opacity: 0.7;
   font-family: 'noto-sans-medium';
   font-size: 16px;
+  cursor: pointer;
 
   &.active {
     font-family: 'noto-sans-black';

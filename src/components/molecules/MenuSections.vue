@@ -22,13 +22,14 @@ export default defineComponent({
   props: {
     title: String,
     menu: Array,
+    default: String
   },
   components: {
     SectionTitle,
     SectionItem,
   },
   setup(props, context) {
-    const currentMenu = ref('')
+    const currentMenu = ref(props.default)
 
     const menuClicked = (val: string) => {
       if (val === currentMenu.value) return
