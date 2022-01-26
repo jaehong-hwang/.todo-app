@@ -1,37 +1,25 @@
 <template>
   <section class="menu">
-    <MenuSections title="Directories" :menu="directoryMenu" @update="directoryUpdate" />
+    <MenuSections title="Directories" :menu="directories" @update="directoryUpdate" />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
+import { directoryFetch } from '@/todo'
 
 export default defineComponent({
   setup() {
-    const directoryMenu = ref([{}])
-
     const directoryUpdate = (val: String) => {
       console.log(val)
     }
 
-    const directoryFetch = async () => {
-      const directories = await window.todo.directories()
-      
-      directoryMenu.value = []
-      for (const val of directories) {
-        directoryMenu.value.push({
-          value: val,
-          name: val.split(/[\/\\]/).pop()
-        })
-      }
-    }
-
-    directoryFetch()
+    const directories = ref([{}])
+    directoryFetch().then((res: Array<Object>) => directories.value = res)
 
     return {
-      directoryMenu,
+      directories,
       directoryUpdate,
     }
   },
