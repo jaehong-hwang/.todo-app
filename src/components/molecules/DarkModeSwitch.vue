@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import SwitchBox from '@/components/atoms/Switch/Box.vue'
 import SwitchCircle from '@/components/atoms/Switch/Circle.vue'
 

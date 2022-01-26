@@ -1,6 +1,6 @@
 // electron/electron.js
 const path = require('path');
-const { app, BrowserWindow, nativeTheme } = require('electron');
+const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
 
 const isDev = process.env.IS_DEV == "true" ? true : false;
 
@@ -27,6 +27,15 @@ function createWindow() {
   if (isDev) {
     mainWindow.webContents.openDevTools();
   }
+
+  ipcMain.handle('dark-mode:toggle', () => {
+    if (nativeTheme.shouldUseDarkColors) {
+      nativeTheme.themeSource = 'light'
+    } else {
+      nativeTheme.themeSource = 'dark'
+    }
+    return nativeTheme.shouldUseDarkColors
+  })
 }
 
 // This method will be called when Electron has finished
