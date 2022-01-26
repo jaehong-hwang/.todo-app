@@ -13,7 +13,7 @@ import SwitchCircle from '@/components/atoms/Switch/Circle.vue'
 export default defineComponent({
   async setup () {
     const toggleActive = () => {
-      window.darkMode.toggle()
+      window.toggleDarkmode()
     }
 
     return {

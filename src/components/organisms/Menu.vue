@@ -5,18 +5,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
 
 export default defineComponent({
   setup() {
-    const directoryMenu = [
-      'todo'
-    ]
+    const directoryMenu = ref([{}])
 
     const directoryUpdate = (val: String) => {
       console.log(val)
     }
+
+    const directoryFetch = async () => {
+      const directories = await window.todo.directories()
+      
+      directoryMenu.value = []
+      for (const val of directories) {
+        directoryMenu.value.push({
+          value: val,
+          name: val.split(/[\/\\]/).pop()
+        })
+      }
+    }
+
+    directoryFetch()
 
     return {
       directoryMenu,

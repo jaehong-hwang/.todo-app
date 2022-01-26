@@ -16,7 +16,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 p {
   color: var(--real-white);
-  font-family: 'noto-sans-bold';
+  opacity: 0.7;
+  font-family: 'noto-sans-medium';
   font-size: 16px;
+
+  &.active {
+    font-family: 'noto-sans-black';
+    opacity: 1;
+  }
 }
 </style>

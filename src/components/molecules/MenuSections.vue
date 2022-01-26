@@ -4,10 +4,10 @@
     <div class="section-content">
       <SectionItem
         v-for="item in menu"
-        :key="item"
-        :value="item"
-        :active="item === currentDirectory"
-        @click="menuClicked(item)"
+        :key="item.value"
+        :value="item.name"
+        :active="item.value === currentMenu"
+        @click="menuClicked(item.value)"
       />
     </div>
   </div>
@@ -28,16 +28,17 @@ export default defineComponent({
     SectionItem,
   },
   setup(props, context) {
-    const currentDirectory = ref('~')
-    const menuClicked = (val: string) => {
-      if (val === currentDirectory.value) return
+    const currentMenu = ref('')
 
-      currentDirectory.value = val
+    const menuClicked = (val: string) => {
+      if (val === currentMenu.value) return
+
+      currentMenu.value = val
       context.emit('update', val)
     }
 
     return {
-      currentDirectory,
+      currentMenu,
       menuClicked,
     }
   },

@@ -1,12 +1,26 @@
 // electron/preload.js
-const {ipcRenderer, contextBridge} = require('electron');
+const {ipcRenderer, ipcMain, contextBridge} = require('electron');
+const run_script = require('./command.ts');
 
-contextBridge.exposeInMainWorld('ipcRenderer', ipcRenderer)
+contextBridge.exposeInMainWorld(
+  'toggleDarkmode',
+  () => {
+    if (nativeTheme.shouldUseDarkColors) {
+      nativeTheme.themeSource = 'light'
+    } else {
+      nativeTheme.themeSource = 'dark'
+    }
+    return nativeTheme.shouldUseDarkColors
+  }
+)
 
-contextBridge.exposeInMainWorld('darkMode', {
-  toggle: () => ipcRenderer.invoke('dark-mode:toggle')
-})
-
+contextBridge.exposeInMainWorld(
+  'todo', {
+    directories: async () => {
+      return JSON.parse(await run_script('todo', ['directories', '--get-json']))
+    }
+  }
+)
 
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
