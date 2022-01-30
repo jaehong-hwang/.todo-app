@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
-import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo'
+import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo/index.ts'
 
 export default defineComponent({
   setup() {
