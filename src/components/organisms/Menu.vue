@@ -7,12 +7,13 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
-import { directoryFetch, setCurrentDirectory, currentDirectory } from '@/todo'
+import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo'
 
 export default defineComponent({
   setup() {
     const directoryUpdate = (val: String) => {
       setCurrentDirectory(val)
+      fetchTodoList()
     }
 
     const directories = ref([{}])

@@ -6,8 +6,12 @@ contextBridge.exposeInMainWorld('toggleDarkmode', () => ipcRenderer.invoke('dark
 
 contextBridge.exposeInMainWorld(
   'todo', {
-    directories: async () => {
-      return JSON.parse(await run_script('todo', ['directories', '--get-json']))
+    run: async (command, options) => {
+      if (!options) {
+        options = []
+      }
+
+      return JSON.parse(await run_script('todo', [command, ...options, '--get-json']))
     }
   }
 )

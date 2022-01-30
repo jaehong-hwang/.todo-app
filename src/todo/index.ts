@@ -1,6 +1,8 @@
+import { directory, todo } from './types'
+
 let directories:Array<directory> = [];
 const directoryFetch = async (): Promise<Array<directory>> => {
-  const res = await window.todo.directories()
+  const res = await window.todo.run('directories')
   
   directories = []
   for (const val of res) {
@@ -25,9 +27,18 @@ const setCurrentDirectory = (dir: string): string => {
   return currentDirectory
 }
 
+let todoList:Array<todo> = [];
+const fetchTodoList = async (): Promise<void> => {
+  const res = await window.todo.run('list', ['--directory='+currentDirectory])
+  todoList = res;
+}
+
 export {
   directoryFetch,
   directories,
   setCurrentDirectory,
   currentDirectory,
+
+  fetchTodoList,
+  todoList,
 }

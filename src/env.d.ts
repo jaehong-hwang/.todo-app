@@ -11,9 +11,4 @@ declare module '*.vue' {
     todo: Object;
   }
 
-  export interface directory {
-    value: String,
-    name: String,
-  }
-
 }
