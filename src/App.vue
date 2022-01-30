@@ -5,6 +5,9 @@
     </transition>
     <section id="app-wrap" :class="{ 'menu-opened': menuOpened }">
       <Header :menuOpened="menuOpened" @toggle-menu="menuOpened = !menuOpened"/>
+      <section id="app-body">
+        <TodoList />
+      </section>
     </section>
   </div>
 </template>
@@ -13,10 +16,15 @@
 import { defineComponent, ref } from 'vue'
 import Header from '@/components/organisms/Header.vue'
 import Menu from '@/components/organisms/Menu.vue'
+import TodoList from '@/components/molecules/TodoList.vue'
+
+import { fetchTodoList } from '@/todo/index.ts'
 
 export default defineComponent({
   setup() {
     const menuOpened = ref(false)
+
+    fetchTodoList()
 
     return {
       menuOpened,
@@ -25,6 +33,7 @@ export default defineComponent({
   components: {
     Header,
     Menu,
+    TodoList,
   },
 })
 </script>
@@ -61,6 +70,11 @@ html, body {
 
   #app-wrap {
     flex: 1;
+    padding: 0 42px;
+  }
+
+  #app-body {
+    padding: 50px 0 0;
   }
 }
 
