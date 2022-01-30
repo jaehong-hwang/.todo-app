@@ -8,12 +8,3 @@ declare module '*.vue' {
 }
 
 declare module '*.ts'
-
-interface todoApi {
-  run: Function;
-}
-
-interface Window {
-  toggleDarkmode: Function;
-  todo: todoApi;
-}

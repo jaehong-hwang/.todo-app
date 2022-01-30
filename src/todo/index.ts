@@ -1,7 +1,7 @@
-import { directory, todo } from './types'
+import { Ref, ref } from 'vue'
 
-let directories:Array<directory> = [];
-const directoryFetch = async (): Promise<Array<directory>> => {
+let directories:Array<Directory> = [];
+const directoryFetch = async (): Promise<Array<Directory>> => {
   const res = await window.todo.run('directories')
   
   directories = []
@@ -27,10 +27,10 @@ const setCurrentDirectory = (dir: string): string => {
   return currentDirectory
 }
 
-let todoList:Array<todo> = [];
+let todoList:Ref<TodoList> = ref([]);
 const fetchTodoList = async (): Promise<void> => {
   const res = await window.todo.run('list', ['--directory='+currentDirectory])
-  todoList = res;
+  todoList.value = res;
 }
 
 export {
