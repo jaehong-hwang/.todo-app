@@ -33,6 +33,11 @@ const fetchTodoList = async (): Promise<void> => {
   todoList.value = res;
 }
 
+const addTodoItem = async (item: TodoItem): Promise<void> => {
+  await window.todo.run('add', item.content)
+  await fetchTodoList()
+}
+
 export {
   directoryFetch,
   directories,
@@ -41,4 +46,6 @@ export {
 
   fetchTodoList,
   todoList,
+
+  addTodoItem,
 }
