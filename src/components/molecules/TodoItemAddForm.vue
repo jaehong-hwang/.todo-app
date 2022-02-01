@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, Ref, ref, nextTick } from 'vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
-import { addTodoItem } from '../../todo'
+import { addTodoItem, fetchTodoList } from '@/todo/index.ts'
 
 export default defineComponent({
   components: {
@@ -42,6 +42,7 @@ export default defineComponent({
 
     const doSubmit = async () => {
       await addTodoItem(todoItem.value)
+      await fetchTodoList()
       initTodoForm()
     }
 

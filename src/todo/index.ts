@@ -34,8 +34,7 @@ const fetchTodoList = async (): Promise<void> => {
 }
 
 const addTodoItem = async (item: TodoItem): Promise<void> => {
-  await window.todo.run('add', item.content)
-  await fetchTodoList()
+  await window.todo.run('add', [item.content])
 }
 
 export {

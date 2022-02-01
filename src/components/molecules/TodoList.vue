@@ -1,6 +1,6 @@
 <template>
   <template v-for="todo in todoList" :key="todo.id">
-    <TodoItem :todo="todo" />
+    <TodoItem class="todo-items" :todo="todo" />
   </template>
 </template>
 
@@ -19,3 +19,8 @@ export default defineComponent({
 })
 </script>
 
+<style lang="scss" scoped>
+.todo-items:not(:last-child) {
+  margin-bottom: 10px;
+}
+</style>
