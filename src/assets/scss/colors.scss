@@ -1,17 +1,21 @@
 :root {
-  --white: #fafafa;
   --real-white: #fafafa;
+
+  --white: #fafafa;
   --black: #2b272b;
+  --dark: #2b272b;
   --gray: #6b646b;
   --primary: #449AA6;
-  --light-black: #3a353a;
+  --error: #d82e3b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --white: #2b272b;
     --black: #fafafa;
+    --dark: #3a353a;
     --gray: #8b848b;
     --primary: #449AA6;
+    --error: #d82e3b;
   }
 }
