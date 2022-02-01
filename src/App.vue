@@ -7,6 +7,7 @@
       <Header :menuOpened="menuOpened" @toggle-menu="menuOpened = !menuOpened"/>
       <section id="app-body">
         <TodoList />
+        <TodoItemAddForm id="todo-item-form" />
       </section>
     </section>
   </div>
@@ -19,6 +20,7 @@ import Menu from '@/components/organisms/Menu.vue'
 import TodoList from '@/components/molecules/TodoList.vue'
 
 import { fetchTodoList } from '@/todo/index.ts'
+import TodoItemAddForm from './components/molecules/TodoItemAddForm.vue'
 
 export default defineComponent({
   setup() {
@@ -34,6 +36,7 @@ export default defineComponent({
     Header,
     Menu,
     TodoList,
+    TodoItemAddForm,
   },
 })
 </script>
@@ -90,5 +93,9 @@ html, body {
   &-enter-from, &-leave-to {
     width: 0;
   }
+}
+
+#todo-item-form {
+  margin-top: 27px;
 }
 </style>

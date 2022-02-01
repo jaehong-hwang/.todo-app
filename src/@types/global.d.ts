@@ -11,14 +11,16 @@ interface Directory {
   name: string,
 }
 
+type status = 'waiting'|'working'|'done'
+
 interface TodoItem {
-  id: number,
-  status: string,
-  author: string,
-  authorEmail: string,
+  id?: number,
+  status: status,
+  author?: string,
+  authorEmail?: string,
   content: string,
-  start: Date,
-  end: Date,
+  start?: Date,
+  end?: Date,
   label?: Array<string>
 }
 

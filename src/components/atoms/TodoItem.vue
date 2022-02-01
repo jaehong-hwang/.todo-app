@@ -30,7 +30,7 @@ export default defineComponent({
   color: var(--black);
 
   @media (prefers-color-scheme: dark) {
-    background: var(--light-black);
+    background: var(--dark);
   }
 }
 </style>
