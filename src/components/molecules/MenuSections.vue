@@ -14,14 +14,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, PropType } from 'vue'
 import SectionTitle from '@/components/atoms/Menu/SectionTitle.vue'
 import SectionItem from '@/components/atoms/Menu/SectionItem.vue'
 
 export default defineComponent({
   props: {
     title: String,
-    menu: Array,
+    menu: Array as PropType<Array<Directory>>,
     default: String
   },
   components: {

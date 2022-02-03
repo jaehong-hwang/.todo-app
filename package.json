@@ -42,10 +42,10 @@
     },
     "files": [
       "dist/**/*",
-      "electron/**/*"
+      "app/**/*"
     ],
     "directories": {
-      "buildResources": "assets",
+      "buildResources": "src/assets",
       "output": "dist_electron"
     }
   }

@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType, ButtonHTMLAttributes } from 'vue'
 
 export default defineComponent({
   props: {
     primary: Boolean,
     error: Boolean,
     type: {
-      type: String,
+      type: String as PropType<ButtonHTMLAttributes['type']>,
       default () {
         return 'button'
       }

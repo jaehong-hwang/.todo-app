@@ -1,6 +1,6 @@
 <template>
   <TodoItemCard>
-    <TodoItemTitle :title="todo.content" />
+    <TodoItemTitle :title="todo?.content" />
     <TodoItemMenu />
   </TodoItemCard>
 </template>

@@ -16,8 +16,8 @@ export default defineComponent({
       fetchTodoList()
     }
 
-    const directories = ref([{}])
-    directoryFetch().then((res: Array<Object>) => directories.value = res)
+    const directories = ref([{} as Directory])
+    directoryFetch().then((res: Array<Directory>) => directories.value = res)
 
     return {
       directories,
