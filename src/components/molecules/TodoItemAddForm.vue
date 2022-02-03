@@ -21,10 +21,10 @@ export default defineComponent({
   setup () {
     const contentInput: Ref<any> = ref(null)
     const isAdding = ref(false)
-    const defaultTodoItem: TodoItem = {
+    const defaultTodoItem = {
       status : 'waiting',
       content: '',
-    }
+    } as TodoItem
 
     const todoItem = ref({...defaultTodoItem})
 
