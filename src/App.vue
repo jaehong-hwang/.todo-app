@@ -17,7 +17,7 @@
 import { defineComponent, ref } from 'vue'
 import Header from '@/components/organisms/Header.vue'
 import Menu from '@/components/organisms/Menu.vue'
-import TodoList from '@/components/molecules/TodoList.vue'
+import TodoList from '@/components/organisms/TodoList.vue'
 
 import { fetchTodoList } from '@/todo/index.ts'
 import TodoItemAddForm from './components/molecules/TodoItemAddForm.vue'
@@ -69,11 +69,13 @@ html, body {
 
 #wrap {
   display: flex;
-  min-height: 100%;
+  height: 100%;
 
   #app-wrap {
     flex: 1;
     padding: 0 42px;
+    overflow: scroll;
+    padding-bottom: 20px;
   }
 
   #app-body {

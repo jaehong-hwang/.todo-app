@@ -38,6 +38,7 @@ export default defineComponent({
   background: var(--dark);
   padding: 90px 0 20px 42px;
   width: 343px;
+  height: 100vh;
   filter: drop-shadow(4px 0px 15px rgba(0, 0, 0, 0.25));
   backdrop-filter: blur(15px);
   text-align: left;

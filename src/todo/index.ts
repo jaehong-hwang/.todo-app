@@ -29,6 +29,8 @@ const setCurrentDirectory = (dir: string): string => {
 
 let todoList:Ref<TodoList> = ref([]);
 const fetchTodoList = async (): Promise<void> => {
+  todoList.value = [];
+
   const res = await window.todo.run('list', ['--directory='+currentDirectory])
   todoList.value = res;
 }
