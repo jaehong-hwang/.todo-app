@@ -27,7 +27,7 @@ const setCurrentDirectory = (dir: string): string => {
   return currentDirectory
 }
 
-let todoList:Ref<TodoList> = ref([]);
+const todoList:Ref<TodoList> = ref([]);
 const fetchTodoList = async (): Promise<void> => {
   todoList.value = [];
 
@@ -43,6 +43,10 @@ const addTodoItem = async (item: TodoItem): Promise<void> => {
   }
 }
 
+const deleteTodoItem = async (item: TodoItem): Promise<void> => {
+  await window.todo.run('remove', ['--id='+item.id, '--directory='+currentDirectory])
+}
+
 export {
   directoryFetch,
   directories,
@@ -53,4 +57,5 @@ export {
   todoList,
 
   addTodoItem,
+  deleteTodoItem,
 }
