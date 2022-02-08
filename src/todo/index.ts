@@ -2,7 +2,7 @@ import { Ref, ref } from 'vue'
 
 let directories:Array<Directory> = [];
 const directoryFetch = async (): Promise<Array<Directory>> => {
-  const res = await window.todo.run('directories')
+  const res = await window.todo.run('collection list')
   
   directories = []
   for (const val of res) {
@@ -36,7 +36,7 @@ const fetchTodoList = async (): Promise<void> => {
 }
 
 const addTodoItem = async (item: TodoItem): Promise<void> => {
-  await window.todo.run('add', [item.content])
+  await window.todo.run('add', [item.content, '--directory='+currentDirectory])
 }
 
 export {
