@@ -36,7 +36,11 @@ const fetchTodoList = async (): Promise<void> => {
 }
 
 const addTodoItem = async (item: TodoItem): Promise<void> => {
-  await window.todo.run('add', [item.content, '--directory='+currentDirectory])
+  if (item.id !== undefined) {
+    await window.todo.run('update', ['--id='+item.id, item.content, '--directory='+currentDirectory])
+  } else {
+    await window.todo.run('add', [item.content, '--directory='+currentDirectory])
+  }
 }
 
 export {

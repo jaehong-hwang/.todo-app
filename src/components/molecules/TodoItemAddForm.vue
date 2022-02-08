@@ -1,16 +1,15 @@
 <template>
   <form @submit.prevent="doSubmit">
-    <section class="todo-add-form" v-show="isAdding">
+    <section class="todo-add-form">
       <input class="todo-add-form__content" type="text" v-model="todoItem.content" ref="contentInput" placeholder="Please input todo content...">
       <NormalButton type="submit" primary>Submit</NormalButton>
       <NormalButton error @click="initTodoForm">Cancel</NormalButton>
     </section>
-    <NormalButton v-show="!isAdding" @click="showTodoForm">Add</NormalButton>
   </form>
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, nextTick } from 'vue'
+import { defineComponent, Ref, ref, onMounted, PropType } from 'vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
 import { addTodoItem, fetchTodoList } from '@/todo/index.ts'
 
@@ -18,26 +17,24 @@ export default defineComponent({
   components: {
     NormalButton
   },
-  setup () {
-    const contentInput: Ref<any> = ref(null)
-    const isAdding = ref(false)
-    const defaultTodoItem = {
-      status : 'waiting',
-      content: '',
-    } as TodoItem
-
-    const todoItem = ref({...defaultTodoItem})
-
-    const showTodoForm = () => {
-      isAdding.value = true
-      nextTick(() => {
-        contentInput.value.focus()
-      })
+  props: {
+    todo: {
+      type: Object as PropType<TodoItem>,
+      default: (): TodoItem => {
+        return {
+          status : 'waiting',
+          content: '',
+        } as TodoItem
+      }
     }
+  },
+  setup (props, context) {
+    const contentInput: Ref<any> = ref(null)
+    const todoItem: Ref<TodoItem> = ref({...props.todo} as TodoItem)
 
     const initTodoForm = () => {
-      isAdding.value = false
-      todoItem.value = {...defaultTodoItem}
+      todoItem.value = {...props.todo}
+      context.emit('close')
     }
 
     const doSubmit = async () => {
@@ -46,11 +43,13 @@ export default defineComponent({
       initTodoForm()
     }
 
+    onMounted(() => {
+      contentInput.value.focus()
+    })
+
     return {
-      isAdding,
       todoItem,
       contentInput,
-      showTodoForm,
       initTodoForm,
       doSubmit,
     }
