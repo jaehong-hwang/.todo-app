@@ -13,7 +13,9 @@ contextBridge.exposeInMainWorld(
 
       console.log('./todo', [command, ...options, '--get-json'])
       const res = await run_script('./todo', [command, ...options, '--get-json'])
-      return JSON.parse(String(res))
+      
+      const jsonRes = JSON.parse(String(res))
+      return jsonRes || res
     }
   }
 )
