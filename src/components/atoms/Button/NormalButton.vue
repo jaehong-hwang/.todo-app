@@ -13,7 +13,7 @@ export default defineComponent({
     error: Boolean,
     type: {
       type: String as PropType<ButtonHTMLAttributes['type']>,
-      default () {
+      default: () => {
         return 'button'
       }
     },
