@@ -1,11 +1,12 @@
 <template>
   <div>
-    <SectionTitle>{{title}}</SectionTitle>
+    <SectionTitle v-if="title">{{title}}</SectionTitle>
     <div class="section-content">
       <SectionItem
         v-for="item in menu"
         :key="item.value"
         :value="item.name"
+        :icon="item.icon"
         :active="item.value === currentMenu"
         @click="menuClicked(item.value)"
       />
@@ -49,9 +50,5 @@ export default defineComponent({
 <style lang="scss" scoped>
 .section-content {
   padding: 10px 0;
-
-  > :not(:last-child) {
-    padding-bottom: 5px;
-  }
 }
 </style>
