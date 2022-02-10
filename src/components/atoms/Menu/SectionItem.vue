@@ -26,7 +26,13 @@ p {
   font-family: 'noto-sans-medium';
   font-size: 14px;
   cursor: pointer;
-  padding: 5px 0;
+  padding: 5px 20px;
+  transition: .3s;
+
+  &:hover {
+    background: rgba(255,255,255,0.05);
+    opacity: 1;
+  }
 
   &.active {
     font-family: 'noto-sans-black';

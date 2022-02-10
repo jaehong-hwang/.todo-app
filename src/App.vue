@@ -1,8 +1,6 @@
 <template>
   <div id="wrap">
-    <transition appear name="slide-left">
-      <Menu v-show="menuOpened" />
-    </transition>
+    <Menu />
     <section id="app-wrap" :class="{ 'menu-opened': menuOpened }">
       <Header :menuOpened="menuOpened" @toggle-menu="menuOpened = !menuOpened"/>
       <section id="app-body">
@@ -87,20 +85,6 @@ html, body {
 
   #app-body {
     padding: 50px 0 0;
-  }
-}
-
-.menu.slide-left {
-  &-enter-active {
-    transition: width .25s ease-out;
-  }
-
-  &-leave-active {
-    transition: width .25s ease-in;
-  }
-
-  &-enter-from, &-leave-to {
-    width: 0;
   }
 }
 

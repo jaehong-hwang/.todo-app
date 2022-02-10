@@ -7,5 +7,6 @@ h3 {
   text-transform: uppercase;
   color: var(--gray);
   font-size: 11px;
+  padding-left: 20px;
 }
 </style>

@@ -9,7 +9,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1140,
     height: 750,
-    titleBarStyle: 'hidden',
+    titleBarStyle: 'hiddenInset',
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload.ts'),
