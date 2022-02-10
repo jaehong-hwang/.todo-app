@@ -1,6 +1,22 @@
 <template>
-  <h3><slot/></h3>
+  <h3 v-if="menuOpened"><slot/></h3>
 </template>
+
+<script lang="ts">
+import { defineComponent, toRef } from 'vue'
+import store from '@/store/index.ts'
+
+export default defineComponent({
+  setup() {
+    const menuOpened = toRef(store.value, 'menuOpened')
+
+    return {
+      menuOpened
+    }
+  },
+})
+</script>
+
 
 <style lang="scss" scoped>
 h3 {

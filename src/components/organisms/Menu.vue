@@ -4,23 +4,39 @@
       <fa-icon icon="angles-left" />
     </div>
     <div class="menu">
-      <div class="menu-open" v-if="!menuOpened" @click="menuOpened = true">
-        <fa-icon icon="angles-right" />
-      </div>
+      <SectionItem
+        v-if="!menuOpened"
+        @click="menuOpened = true"
+        value="open"
+        icon="angles-right"
+      />
       <Author />
-      <MenuSections :menu="basicMenu" @update="directoryUpdate" />
-      <MenuSections title="Projects" :menu="directories" :default="currentDirectory" @update="directoryUpdate" />
+      <MenuSections
+        :menu="basicMenu"
+        @update="directoryUpdate"
+      />
+      <MenuSections
+        title="Projects"
+        :menu="directories"
+        :default="currentDirectory"
+        @update="directoryUpdate"
+      />
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, toRef } from 'vue'
+import SectionItem from '@/components/atoms/Menu/SectionItem.vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
 import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo/index.ts'
 import store from '@/store/index.ts'
 
 export default defineComponent({
+  components: {
+    MenuSections,
+    SectionItem,
+  },
   setup() {
     const menuOpened = toRef(store.value, 'menuOpened')
     const basicMenu = [
@@ -66,9 +82,6 @@ export default defineComponent({
       currentDirectory,
       menuOpened,
     }
-  },
-  components: {
-    MenuSections
   }
 })
 </script>
@@ -87,7 +100,6 @@ export default defineComponent({
     height: 100vh;
     backdrop-filter: blur(15px);
     text-align: left;
-    overflow: hidden;
     transition: .3s;
 
     &.opened {
@@ -128,4 +140,4 @@ export default defineComponent({
     }
   }
 }
-</style>vsc 
+</style>
