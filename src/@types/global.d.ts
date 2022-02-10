@@ -9,7 +9,7 @@ interface TodoApi {
 interface Directory {
   value: string,
   name: string,
-  icon?: string,
+  icon?: string|Array<string>,
 }
 
 type status = 'waiting'|'working'|'done'

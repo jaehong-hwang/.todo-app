@@ -22,7 +22,7 @@ export default defineComponent({
       {
         value: 'today',
         name: 'today',
-        icon: 'clock'
+        icon: ['far', 'clock']
       },
       {
         value: 'completed',

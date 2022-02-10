@@ -12,7 +12,7 @@ export default defineComponent({
     icon: {
       type: String,
       default () {
-        return 'folder'
+        return ['far', 'folder']
       }
     }
   }
