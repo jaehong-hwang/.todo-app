@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, toRef } from 'vue'
 import Header from '@/components/organisms/Header.vue'
 import Menu from '@/components/organisms/Menu.vue'
 import TodoList from '@/components/organisms/TodoList.vue'
@@ -24,9 +24,11 @@ import { fetchTodoList } from '@/todo/index.ts'
 import TodoItemAddForm from './components/molecules/TodoItemAddForm.vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
 
+import store from '@/store/index.ts'
+
 export default defineComponent({
   setup() {
-    const menuOpened = ref(false)
+    const menuOpened = toRef(store.value, 'menuOpened')
     const isAdding = ref(false)
 
     fetchTodoList()
