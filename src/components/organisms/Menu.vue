@@ -101,7 +101,7 @@ export default defineComponent({
   }
 
   &-open {
-    color: var(--black);
+    color: var(--real-white);
     opacity: 0.7;
     transition: .3s;
 
@@ -112,7 +112,7 @@ export default defineComponent({
 
   &-close {
     position: absolute;
-    color: var(--black);
+    color: var(--real-white);
     opacity: 0;
     transition: .3s;
     top: 5px;
