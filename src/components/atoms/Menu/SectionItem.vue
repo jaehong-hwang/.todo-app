@@ -54,7 +54,7 @@ p {
   }
 
   &.active {
-    
+    font-family: 'noto-sans-black';
     opacity: 1;
   }
 
