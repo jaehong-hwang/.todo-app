@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef } from 'vue'
-import store from '@/store/index.ts'
+import { defineComponent, computed } from 'vue'
+import { getItem } from '@/store/index.ts'
 
 export default defineComponent({
   props: {
@@ -24,7 +24,7 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const menuOpened = toRef(store.value, 'menuOpened')
+    const menuOpened = getItem('menuOpened')
     const showIcon = computed(() => {
       return menuOpened.value || typeof props.icon === 'string' || props.icon[1] !== 'folder'
     })

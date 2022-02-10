@@ -2,7 +2,7 @@
   <div id="wrap">
     <Menu />
     <section id="app-wrap" :class="{ 'menu-opened': menuOpened }">
-      <Header :menuOpened="menuOpened" @toggle-menu="menuOpened = !menuOpened"/>
+      <Header/>
       <section id="app-body">
         <TodoList />
         <TodoItemAddForm v-show="isAdding" @close="isAdding = false" id="todo-item-form" />
@@ -22,18 +22,14 @@ import { fetchTodoList } from '@/todo/index.ts'
 import TodoItemAddForm from './components/molecules/TodoItemAddForm.vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
 
-import store from '@/store/index.ts'
-
 export default defineComponent({
   setup() {
-    const menuOpened = toRef(store.value, 'menuOpened')
     const isAdding = ref(false)
 
     fetchTodoList()
 
     return {
       isAdding,
-      menuOpened,
     }
   },
   components: {

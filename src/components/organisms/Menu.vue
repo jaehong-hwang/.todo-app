@@ -26,11 +26,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRef } from 'vue'
+import { defineComponent, ref } from 'vue'
 import SectionItem from '@/components/atoms/Menu/SectionItem.vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
 import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo/index.ts'
-import store from '@/store/index.ts'
+import { getItem } from '@/store/index.ts'
 
 export default defineComponent({
   components: {
@@ -38,7 +38,7 @@ export default defineComponent({
     SectionItem,
   },
   setup() {
-    const menuOpened = toRef(store.value, 'menuOpened')
+    const menuOpened = getItem('menuOpened')
     const basicMenu = [
       {
         value: 'inbox',

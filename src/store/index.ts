@@ -1,4 +1,4 @@
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, toRef } from "vue";
 
 const storeInit = () => {
   const storeJSON = localStorage.getItem('store')
@@ -21,3 +21,7 @@ watchEffect(() => {
 })
 
 export default store
+
+export function getItem(name: any) {
+  return toRef(store.value, name)
+}

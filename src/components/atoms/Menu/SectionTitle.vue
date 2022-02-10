@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRef } from 'vue'
-import store from '@/store/index.ts'
+import { defineComponent } from 'vue'
+import { getItem } from '@/store/index.ts'
 
 export default defineComponent({
   setup() {
-    const menuOpened = toRef(store.value, 'menuOpened')
+    const menuOpened = getItem('menuOpened')
 
     return {
       menuOpened
