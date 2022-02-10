@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHatWizard } from '@fortawesome/free-solid-svg-icons'
+import { faFolder } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import App from './App.vue'
 
-library.add(faHatWizard)
+library.add(faFolder)
 
 createApp(App).component('fa-icon', FontAwesomeIcon).mount('#app')

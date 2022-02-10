@@ -1,5 +1,5 @@
 <template>
-  <p :class="{ active }">{{ value }}</p>  
+  <p :class="{ active }"><fa-icon :icon="'folder'" />{{ value }}</p>  
 </template>
 
 <script lang="ts">
