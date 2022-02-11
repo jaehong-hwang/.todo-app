@@ -24,7 +24,7 @@ export default defineComponent({
   setup (props, context) {
     const menuOpened = getItem('menuOpened')
     const icon = computed((): Directory['icon'] => {
-      return props.menu ? props.menu.icon : ['far', 'folder']
+      return props.menu && props.menu.icon ? props.menu.icon : ['far', 'folder']
     })
     const showIcon = computed(() => {
       return menuOpened.value || typeof icon.value === 'string' || (icon.value instanceof Array && icon.value[1] !== 'folder')
