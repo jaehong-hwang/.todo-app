@@ -12,14 +12,11 @@
       />
       <Author />
       <MenuSections
-        :menu="basicMenu"
-        @update="directoryUpdate"
-      />
-      <MenuSections
-        title="Projects"
-        :menu="directories"
-        :default="currentDirectory"
-        @update="directoryUpdate"
+        v-for="(item, k) in pageList"
+        :key="k"
+        :title="k === 'index' ? '' : k"
+        :menu="item"
+        @update="setCurrentPage(item)"
       />
     </div>
   </section>
@@ -29,8 +26,8 @@
 import { defineComponent, ref } from 'vue'
 import SectionItem from '@/components/atoms/Menu/SectionItem.vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
-import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo/index.ts'
 import { getItem } from '@/store/index.ts'
+import { pageList, setCurrentPage } from '@/store/page.ts'
 
 export default defineComponent({
   components: {
@@ -39,48 +36,11 @@ export default defineComponent({
   },
   setup() {
     const menuOpened = getItem('menuOpened')
-    const basicMenu = [
-      {
-        value: 'inbox',
-        name: 'inbox',
-        icon: 'inbox'
-      },
-      {
-        value: 'today',
-        name: 'today',
-        icon: ['far', 'clock']
-      },
-      {
-        value: 'completed',
-        name: 'completed',
-        icon: 'check'
-      },
-      {
-        value: 'archived',
-        name: 'archived',
-        icon: 'archive'
-      },
-      {
-        value: 'setting',
-        name: 'setting',
-        icon: 'gear'
-      }
-    ] as Array<Directory>;
-
-    const directoryUpdate = (val: String) => {
-      setCurrentDirectory(val)
-      fetchTodoList()
-    }
-
-    const directories = ref([{} as Directory])
-    directoryFetch().then((res: Array<Directory>) => directories.value = res)
 
     return {
-      basicMenu,
-      directories,
-      directoryUpdate,
-      currentDirectory,
       menuOpened,
+      pageList,
+      setCurrentPage,
     }
   }
 })

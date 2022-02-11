@@ -7,8 +7,8 @@
         :key="item.value"
         :value="item.name"
         :icon="item.icon"
-        :active="item.value === currentMenu"
-        @click="menuClicked(item.value)"
+        :active="item.value === currentPage"
+        @click="$emit('update', item.value)"
       />
     </div>
   </div>
@@ -30,19 +30,6 @@ export default defineComponent({
     SectionItem,
   },
   setup(props, context) {
-    const currentMenu = ref(props.default)
-
-    const menuClicked = (val: string) => {
-      if (val === currentMenu.value) return
-
-      currentMenu.value = val
-      context.emit('update', val)
-    }
-
-    return {
-      currentMenu,
-      menuClicked,
-    }
   },
 })
 </script>
