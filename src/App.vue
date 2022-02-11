@@ -1,7 +1,7 @@
 <template>
   <div id="wrap">
     <Menu />
-    <section id="app-wrap" :class="{ 'menu-opened': menuOpened }">
+    <section id="app-wrap">
       <Header/>
       <section id="app-body">
         <TodoList />

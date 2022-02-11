@@ -6,7 +6,6 @@
         v-for="item in menu"
         :key="item.value"
         :menu="item"
-        :active="item.value === currentPage"
         @click="$emit('update', item.value)"
       />
     </div>
