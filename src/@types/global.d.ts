@@ -10,6 +10,7 @@ interface Directory {
   value: string,
   name: string,
   icon?: string|string[],
+  prevent?: boolean
 }
 
 type status = 'waiting'|'working'|'done'

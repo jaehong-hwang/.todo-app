@@ -31,6 +31,8 @@ export default defineComponent({
     })
 
     const updatePage = () => {
+      if (props.menu.prevent) return
+
       setCurrentPage(props.menu)
     }
 

@@ -7,8 +7,12 @@
       <SectionItem
         v-if="!menuOpened"
         @click="menuOpened = true"
-        value="open"
-        icon="angles-right"
+        :menu="{
+          value: 'open',
+          name: 'open',
+          icon: 'angles-right',
+          prevent: true
+        }"
       />
       <Author />
       <MenuSections
