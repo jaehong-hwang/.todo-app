@@ -31,7 +31,7 @@ const pageList = ref({
       icon: 'gear'
     }
   ],
-  projects: [] as Array<Directory>
+  projects: [] as Directory[]
 });
 
 const setCurrentPage = (val: string) => {
@@ -39,7 +39,7 @@ const setCurrentPage = (val: string) => {
   fetchTodoList()
 }
 
-directoryFetch().then((res: Array<Directory>) => pageList.value.projects = res)
+directoryFetch().then((res: Directory[]) => pageList.value.projects = res)
 
 export {
   pageTitle,

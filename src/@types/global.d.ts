@@ -9,7 +9,7 @@ interface TodoApi {
 interface Directory {
   value: string,
   name: string,
-  icon?: string|Array<string>,
+  icon?: string|string[],
 }
 
 type status = 'waiting'|'working'|'done'
@@ -22,7 +22,7 @@ interface TodoItem {
   content: string,
   start?: Date,
   end?: Date,
-  label?: Array<string>
+  label?: string[]
 }
 
 interface TodoList {

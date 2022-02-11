@@ -22,7 +22,7 @@ import SectionItem from '@/components/atoms/Menu/SectionItem.vue'
 export default defineComponent({
   props: {
     title: String,
-    menu: Array as PropType<Array<Directory>>,
+    menu: Array as PropType<Directory[]>,
     default: String
   },
   components: {
