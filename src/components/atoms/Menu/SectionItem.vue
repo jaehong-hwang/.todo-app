@@ -1,37 +1,44 @@
 <template>
-  <p :class="{ active, big: !menuOpened }">
+  <p v-if="menu" :class="{ active, big: !menuOpened }" @click="updatePage">
     <fa-icon :icon="icon" class="menu-icon" v-if="showIcon" />
     <div class="menu-icon text" v-if="!showIcon">
-      {{ value ? value[0] : '' }}
+      {{ menu.name ? menu.name[0] : '' }}
     </div>
-    <span class="menu-title">{{ value }}</span>
+    <span class="menu-title">{{ menu.name }}</span>
   </p>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, PropType } from 'vue'
 import { getItem } from '@/store/index.ts'
+import { setCurrentPage } from '@/store/page.ts'
 
 export default defineComponent({
   props: {
-    value: String,
+    menu: {
+      type: Object as PropType<Directory>,
+      required: true,
+    },
     active: Boolean,
-    icon: {
-      type: String,
-      default: () => {
-        return ['far', 'folder']
-      }
-    }
   },
-  setup (props) {
+  setup (props, context) {
     const menuOpened = getItem('menuOpened')
-    const showIcon = computed(() => {
-      return menuOpened.value || typeof props.icon === 'string' || props.icon[1] !== 'folder'
+    const icon = computed((): Directory['icon'] => {
+      return props.menu ? props.menu.icon : ['far', 'folder']
     })
+    const showIcon = computed(() => {
+      return menuOpened.value || typeof icon.value === 'string' || (icon.value instanceof Array && icon.value[1] !== 'folder')
+    })
+
+    const updatePage = () => {
+      setCurrentPage(props.menu)
+    }
 
     return {
       menuOpened,
-      showIcon
+      icon,
+      showIcon,
+      updatePage,
     }
   }
 })

@@ -5,8 +5,7 @@
       <SectionItem
         v-for="item in menu"
         :key="item.value"
-        :value="item.name"
-        :icon="item.icon"
+        :menu="item"
         :active="item.value === currentPage"
         @click="$emit('update', item.value)"
       />

@@ -16,7 +16,6 @@
         :key="k"
         :title="k === 'index' ? '' : k"
         :menu="item"
-        @update="setCurrentPage(item)"
       />
     </div>
   </section>
@@ -27,7 +26,7 @@ import { defineComponent, ref } from 'vue'
 import SectionItem from '@/components/atoms/Menu/SectionItem.vue'
 import MenuSections from '@/components/molecules/MenuSections.vue'
 import { getItem } from '@/store/index.ts'
-import { pageList, setCurrentPage } from '@/store/page.ts'
+import { pageList } from '@/store/page.ts'
 
 export default defineComponent({
   components: {
@@ -40,7 +39,6 @@ export default defineComponent({
     return {
       menuOpened,
       pageList,
-      setCurrentPage,
     }
   }
 })

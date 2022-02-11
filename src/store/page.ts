@@ -34,8 +34,9 @@ const pageList = ref({
   projects: [] as Directory[]
 });
 
-const setCurrentPage = (val: string) => {
-  setCurrentDirectory(val)
+const setCurrentPage = (menu: Directory) => {
+  console.log(menu)
+  setCurrentDirectory(menu.value)
   fetchTodoList()
 }
 
