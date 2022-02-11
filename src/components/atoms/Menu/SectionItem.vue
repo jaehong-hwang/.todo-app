@@ -54,7 +54,7 @@ export default defineComponent({
 p {
   position: relative;
   color: var(--real-white);
-  opacity: 0.7;
+  opacity: 0.5;
   font-family: 'noto-sans-medium';
   font-size: 14px;
   cursor: pointer;
