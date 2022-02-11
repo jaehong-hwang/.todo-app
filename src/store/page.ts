@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo'
 
-const pageTitle = ref('')
+const currentPage = ref({} as Directory)
 
 const pageList = ref({
   'index': [
@@ -35,15 +35,16 @@ const pageList = ref({
 });
 
 const setCurrentPage = (menu: Directory) => {
-  console.log(menu)
   setCurrentDirectory(menu.value)
   fetchTodoList()
+
+  currentPage.value = menu
 }
 
 directoryFetch().then((res: Directory[]) => pageList.value.projects = res)
 
 export {
-  pageTitle,
+  currentPage,
   pageList,
   setCurrentPage
 }

@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, computed, PropType } from 'vue'
 import { getItem } from '@/store/index.ts'
-import { setCurrentPage } from '@/store/page.ts'
+import { setCurrentPage, currentPage } from '@/store/page.ts'
 
 export default defineComponent({
   props: {
@@ -19,7 +19,6 @@ export default defineComponent({
       type: Object as PropType<Directory>,
       required: true,
     },
-    active: Boolean,
   },
   setup (props, context) {
     const menuOpened = getItem('menuOpened')
@@ -28,6 +27,10 @@ export default defineComponent({
     })
     const showIcon = computed(() => {
       return menuOpened.value || typeof icon.value === 'string' || (icon.value instanceof Array && icon.value[1] !== 'folder')
+    })
+
+    const active = computed(() => {
+      return props.menu && props.menu.value === currentPage.value.value
     })
 
     const updatePage = () => {
@@ -41,6 +44,7 @@ export default defineComponent({
       icon,
       showIcon,
       updatePage,
+      active,
     }
   }
 })
