@@ -1,12 +1,12 @@
 <template>
-  <SwitchBox @click="toggleActive">
+  <SwitchBox size="small" @click="toggleActive" v-model:active="isDarkMode">
     <SwitchCircle>
     </SwitchCircle>
   </SwitchBox>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import SwitchBox from '@/components/atoms/Switch/Box.vue'
 import SwitchCircle from '@/components/atoms/Switch/Circle.vue'
 
@@ -16,8 +16,11 @@ export default defineComponent({
       window.toggleDarkmode()
     }
 
+    const isDarkMode = ref(false)
+
     return {
       toggleActive,
+      isDarkMode,
     }
   },
   components: {

@@ -1,11 +1,10 @@
 <template>
   <div id="wrap">
-    <transition appear name="slide-left">
-      <Menu v-show="menuOpened" />
-    </transition>
-    <section id="app-wrap" :class="{ 'menu-opened': menuOpened }">
-      <Header :menuOpened="menuOpened" @toggle-menu="menuOpened = !menuOpened"/>
+    <Menu />
+    <section id="app-wrap">
+      <Header/>
       <section id="app-body">
+        <h2 id="app-body-title">{{ currentPage.name }}</h2>
         <TodoList />
         <TodoItemAddForm v-show="isAdding" @close="isAdding = false" id="todo-item-form" />
         <NormalButton v-show="!isAdding" @click="isAdding = true">Add</NormalButton>
@@ -15,25 +14,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, toRef } from 'vue'
 import Header from '@/components/organisms/Header.vue'
 import Menu from '@/components/organisms/Menu.vue'
 import TodoList from '@/components/organisms/TodoList.vue'
 
-import { fetchTodoList } from '@/todo/index.ts'
+import { currentPage } from '@/store/page.ts'
 import TodoItemAddForm from './components/molecules/TodoItemAddForm.vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
 
 export default defineComponent({
   setup() {
-    const menuOpened = ref(false)
     const isAdding = ref(false)
-
-    fetchTodoList()
 
     return {
       isAdding,
-      menuOpened,
+      currentPage,
     }
   },
   components: {
@@ -78,27 +74,19 @@ html, body {
 
   #app-wrap {
     flex: 1;
-    padding: 0 42px;
     overflow: scroll;
-    padding-bottom: 20px;
+    padding: 0 15px 20px 30px;
   }
 
   #app-body {
-    padding: 50px 0 0;
-  }
-}
+    padding: 40px 0 0;
+    text-align: left;
 
-.menu.slide-left {
-  &-enter-active {
-    transition: width .25s ease-out;
-  }
-
-  &-leave-active {
-    transition: width .25s ease-in;
-  }
-
-  &-enter-from, &-leave-to {
-    width: 0;
+    &-title {
+      font-size: 28px;
+      font-family: 'noto-sans-bold';
+      margin-bottom: 38px;
+    }
   }
 }
 

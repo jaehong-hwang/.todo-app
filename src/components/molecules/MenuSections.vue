@@ -1,13 +1,12 @@
 <template>
   <div>
-    <SectionTitle>{{title}}</SectionTitle>
+    <SectionTitle v-if="title">{{title}}</SectionTitle>
     <div class="section-content">
       <SectionItem
         v-for="item in menu"
         :key="item.value"
-        :value="item.name"
-        :active="item.value === currentMenu"
-        @click="menuClicked(item.value)"
+        :menu="item"
+        @click="$emit('update', item.value)"
       />
     </div>
   </div>
@@ -21,7 +20,7 @@ import SectionItem from '@/components/atoms/Menu/SectionItem.vue'
 export default defineComponent({
   props: {
     title: String,
-    menu: Array as PropType<Array<Directory>>,
+    menu: Array as PropType<Directory[]>,
     default: String
   },
   components: {
@@ -29,19 +28,6 @@ export default defineComponent({
     SectionItem,
   },
   setup(props, context) {
-    const currentMenu = ref(props.default)
-
-    const menuClicked = (val: string) => {
-      if (val === currentMenu.value) return
-
-      currentMenu.value = val
-      context.emit('update', val)
-    }
-
-    return {
-      currentMenu,
-      menuClicked,
-    }
   },
 })
 </script>
@@ -49,9 +35,5 @@ export default defineComponent({
 <style lang="scss" scoped>
 .section-content {
   padding: 10px 0;
-
-  > :not(:last-child) {
-    padding-bottom: 5px;
-  }
 }
 </style>

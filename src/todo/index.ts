@@ -1,7 +1,7 @@
 import { Ref, ref } from 'vue'
 
-let directories:Array<Directory> = [];
-const directoryFetch = async (): Promise<Array<Directory>> => {
+let directories:Directory[] = [];
+const directoryFetch = async (): Promise<Directory[]> => {
   const res = await window.todo.run('collection list')
   
   directories = []

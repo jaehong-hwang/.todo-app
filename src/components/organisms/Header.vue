@@ -1,7 +1,6 @@
 <template>
   <header>
-    <Logo />
-    <Hamberger id="hamberger" :active="menuOpened" @click="$emit('toggle-menu')" />
+    <DirectoryNavigator :menu="currentPage" />
     <Suspense>
       <template #default>
         <DarkModeSwitch id="switch" />
@@ -13,19 +12,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Logo from '@/components/atoms/Logo.vue'
-import Hamberger from '@/components/atoms/Hamberger.vue'
 import DarkModeSwitch from '@/components/molecules/DarkModeSwitch.vue'
+import DirectoryNavigator from '@/components/atoms/DirectoryNavigator.vue'
+import { currentPage } from '@/store/page.ts'
 
 export default defineComponent({
   props: {
     menuOpened: Boolean,
   },
   setup () {
+    return {
+      currentPage
+    }
   },
   components: {
     Logo,
-    Hamberger,
     DarkModeSwitch,
+    DirectoryNavigator,
   },
 })
 </script>
@@ -33,25 +36,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 header {
   -webkit-app-region: drag;
-  padding: 38px 0 0;
-  height: 70px;
+  padding: 8px 0;
+  height: 36px;
   line-height: 43px;
+  display: flex;
+  justify-content: space-between;
 
   * {
     display: inline-block;
-  }
-
-  #hamberger {
-    position: fixed;
-    top: 40px;
-    left: 42px;
-    cursor: pointer;
-  }
-
-  #switch {
-    position: fixed;
-    top: 40px;
-    right: 42px;
   }
 }
 </style>

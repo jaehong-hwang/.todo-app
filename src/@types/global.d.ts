@@ -3,25 +3,28 @@
  */
 
 interface TodoApi {
-  run: Function;
+  run: Function
 }
 
 interface Directory {
-  value: string,
-  name: string,
+  value: string
+  name: string
+  icon?: string|string[]
+  prevent?: boolean
+  global?: boolean
 }
 
 type status = 'waiting'|'working'|'done'
 
 interface TodoItem {
-  id?: number,
-  status: status,
-  author?: string,
-  authorEmail?: string,
-  content: string,
-  start?: Date,
-  end?: Date,
-  label?: Array<string>
+  id?: number
+  status: status
+  author?: string
+  authorEmail?: string
+  content: string
+  start?: Date
+  end?: Date
+  label?: string[]
 }
 
 interface TodoList {
@@ -30,6 +33,8 @@ interface TodoList {
 
 
 interface Window {
-  toggleDarkmode: Function;
-  todo: TodoApi;
+  toggleDarkmode: Function
+  todo: TodoApi
 }
+
+type Size = "medium"|"small"|"big"

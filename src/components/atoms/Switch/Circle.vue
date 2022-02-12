@@ -13,13 +13,7 @@ export default defineComponent({})
 <style lang="scss" scoped>
 .circle {
   background: var(--white);
-  width: 24px;
-  height: 24px;
+  height: 100%;
   border-radius: 100%;
-  transition: margin .3s;
-
-  @media (prefers-color-scheme: dark) {
-    margin-left: 30px;
-  }
 }
 </style>
