@@ -37,3 +37,4 @@ interface Window {
   todo: TodoApi
 }
 
+type Size = "medium"|"small"|"big"
