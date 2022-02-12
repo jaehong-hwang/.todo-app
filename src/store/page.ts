@@ -8,27 +8,32 @@ const pageList = ref({
     {
       value: 'inbox',
       name: 'inbox',
-      icon: 'inbox'
+      icon: 'inbox',
+      global: true,
     },
     {
       value: 'today',
       name: 'today',
-      icon: ['far', 'clock']
+      icon: ['far', 'clock'],
+      global: true,
     },
     {
       value: 'completed',
       name: 'completed',
-      icon: 'check'
+      icon: 'check',
+      global: true,
     },
     {
       value: 'archived',
       name: 'archived',
-      icon: 'archive'
+      icon: 'archive',
+      global: true,
     },
     {
       value: 'setting',
       name: 'setting',
-      icon: 'gear'
+      icon: 'gear',
+      global: true,
     }
   ],
   projects: [] as Directory[]
@@ -40,6 +45,8 @@ const setCurrentPage = (menu: Directory) => {
 
   currentPage.value = menu
 }
+
+setCurrentPage(pageList.value.index[0])
 
 directoryFetch().then((res: Directory[]) => pageList.value.projects = res)
 
