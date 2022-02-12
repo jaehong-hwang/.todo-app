@@ -36,7 +36,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 header {
   -webkit-app-region: drag;
-  padding: 8px 10px;
+  padding: 8px 0;
   height: 36px;
   line-height: 43px;
   display: flex;

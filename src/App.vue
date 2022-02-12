@@ -4,6 +4,7 @@
     <section id="app-wrap">
       <Header/>
       <section id="app-body">
+        <h2 id="app-body-title">{{ currentPage.name }}</h2>
         <TodoList />
         <TodoItemAddForm v-show="isAdding" @close="isAdding = false" id="todo-item-form" />
         <NormalButton v-show="!isAdding" @click="isAdding = true">Add</NormalButton>
@@ -18,7 +19,7 @@ import Header from '@/components/organisms/Header.vue'
 import Menu from '@/components/organisms/Menu.vue'
 import TodoList from '@/components/organisms/TodoList.vue'
 
-import { fetchTodoList } from '@/todo/index.ts'
+import { currentPage } from '@/store/page.ts'
 import TodoItemAddForm from './components/molecules/TodoItemAddForm.vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
 
@@ -26,10 +27,9 @@ export default defineComponent({
   setup() {
     const isAdding = ref(false)
 
-    fetchTodoList()
-
     return {
       isAdding,
+      currentPage,
     }
   },
   components: {
@@ -75,11 +75,18 @@ html, body {
   #app-wrap {
     flex: 1;
     overflow: scroll;
-    padding-bottom: 20px;
+    padding: 0 15px 20px 30px;
   }
 
   #app-body {
-    padding: 50px 42px 0;
+    padding: 40px 0 0;
+    text-align: left;
+
+    &-title {
+      font-size: 28px;
+      font-family: 'noto-sans-bold';
+      margin-bottom: 38px;
+    }
   }
 }
 
