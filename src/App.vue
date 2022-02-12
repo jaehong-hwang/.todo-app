@@ -74,13 +74,12 @@ html, body {
 
   #app-wrap {
     flex: 1;
-    padding: 0 42px;
     overflow: scroll;
     padding-bottom: 20px;
   }
 
   #app-body {
-    padding: 50px 0 0;
+    padding: 50px 42px 0;
   }
 }
 
