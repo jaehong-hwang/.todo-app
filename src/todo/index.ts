@@ -39,7 +39,7 @@ const addTodoItem = async (item: TodoItem): Promise<void> => {
   if (item.id !== undefined) {
     await window.todo.run('update', ['--id='+item.id, item.content, '--directory='+currentDirectory])
   } else {
-    await window.todo.run('add', [item.content, '--directory='+currentDirectory])
+    await window.todo.run('add', ['"'+item.content+'"', '--directory='+currentDirectory])
   }
 }
 
