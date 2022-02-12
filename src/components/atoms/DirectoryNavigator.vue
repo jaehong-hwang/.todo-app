@@ -34,14 +34,17 @@ export default defineComponent({
 .directory-navigation {
   font-size: 14px;
   line-height: 100%;
-  color: var(--real-white);
+  color: var(--black);
   opacity: 0.5;
+  transition: .3s;
 
   .full {
     display: none;
   }
 
   &:hover {
+    opacity: 1;
+
     .full {
       display: inline;
     }
