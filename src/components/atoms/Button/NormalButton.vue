@@ -32,6 +32,7 @@ button {
   overflow: hidden;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  transition: box-shadow .3s;
 
   &.primary {
     background: var(--primary);
@@ -39,6 +40,10 @@ button {
 
   &.error {
     background: var(--error);
+  }
+
+  &:hover {
+    box-shadow: 0px 5px 13px rgba(0,0,0,0.3);
   }
 }
 </style>
