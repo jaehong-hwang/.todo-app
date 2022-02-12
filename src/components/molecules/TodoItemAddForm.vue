@@ -2,7 +2,7 @@
   <form @submit.prevent="doSubmit">
     <section class="todo-add-form">
       <input class="todo-add-form__content" type="text" v-model="todoItem.content" ref="contentInput" placeholder="Please input todo content...">
-      <NormalButton type="submit" primary>Submit</NormalButton>
+      <NormalButton type="submit" primary :loading="loading">Submit</NormalButton>
       <NormalButton v-if="todo.id !== undefined" error @click="deleteItem">Delete</NormalButton>
       <NormalButton @click="initTodoForm">Cancel</NormalButton>
     </section>
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref, onMounted, PropType } from 'vue'
+import { defineComponent, Ref, ref, onMounted, PropType, nextTick } from 'vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
 import { addTodoItem, deleteTodoItem, fetchTodoList } from '@/todo/index.ts'
 
@@ -30,6 +30,7 @@ export default defineComponent({
     }
   },
   setup (props, context) {
+    const loading = ref(false)
     const contentInput: Ref<any> = ref(null)
     const todoItem: Ref<TodoItem> = ref({...props.todo} as TodoItem)
 
@@ -45,8 +46,10 @@ export default defineComponent({
     }
 
     const doSubmit = async () => {
+      loading.value = true
       await addTodoItem(todoItem.value)
       await fetchTodoList()
+      loading.value = false
       initTodoForm()
     }
 
@@ -55,6 +58,7 @@ export default defineComponent({
     })
 
     return {
+      loading,
       todoItem,
       contentInput,
       deleteItem,
