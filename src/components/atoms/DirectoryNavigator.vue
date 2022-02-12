@@ -16,11 +16,15 @@ export default defineComponent({
   },
   setup (props) {
     const menuText = computed((): string => {
-      if (props.menu && props.menu.value[0] === '/') {
+      if (props.menu) {
         const dirArray = props.menu.value.split('/')
-        return `/${dirArray[1]}/.../${dirArray[dirArray.length-1]}`
+        if (props.menu.value[0] === '/' && dirArray.length > 5) {
+          return `/${dirArray[1]}/.../${dirArray[dirArray.length-1]}`
+        }
+
+        return props.menu.value
       }
-      return props.menu ? props.menu.value : ''
+      return ''
     })
 
     return {
