@@ -1,4 +1,4 @@
-import { Ref, ref } from 'vue'
+import { Ref, ref, nextTick } from 'vue'
 
 let directories:Directory[] = [];
 const directoryFetch = async (): Promise<Directory[]> => {
@@ -28,11 +28,14 @@ const setCurrentDirectory = (dir: string): string => {
 }
 
 const todoList:Ref<TodoList> = ref([]);
+const fetchTodoLoading = ref(false);
 const fetchTodoList = async (): Promise<void> => {
+  fetchTodoLoading.value = true
   todoList.value = [];
 
   const res = await window.todo.run('list', ['--directory='+currentDirectory])
   todoList.value = res;
+  fetchTodoLoading.value = false
 }
 
 const addTodoItem = async (item: TodoItem): Promise<void> => {
@@ -54,6 +57,7 @@ export {
   currentDirectory,
 
   fetchTodoList,
+  fetchTodoLoading,
   todoList,
 
   addTodoItem,
