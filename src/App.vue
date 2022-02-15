@@ -2,6 +2,7 @@
   <div id="wrap">
     <Menu />
     <section id="app-wrap">
+      <TodoFetchLoading v-if="fetchTodoLoading" />
       <Header/>
       <section id="app-body">
         <h2 id="app-body-title">{{ currentPage.name }}</h2>
@@ -14,14 +15,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRef } from 'vue'
+import { defineComponent, ref } from 'vue'
 import Header from '@/components/organisms/Header.vue'
 import Menu from '@/components/organisms/Menu.vue'
 import TodoList from '@/components/organisms/TodoList.vue'
 
+import { fetchTodoLoading } from '@/todo/index.ts'
 import { currentPage } from '@/store/page.ts'
-import TodoItemAddForm from './components/molecules/TodoItemAddForm.vue'
+import TodoItemAddForm from '@/components/molecules/TodoItemAddForm.vue'
 import NormalButton from '@/components/atoms/Button/NormalButton.vue'
+import TodoFetchLoading from '@/components/molecules/TodoFetchLoading.vue'
 
 export default defineComponent({
   setup() {
@@ -30,6 +33,7 @@ export default defineComponent({
     return {
       isAdding,
       currentPage,
+      fetchTodoLoading,
     }
   },
   components: {
@@ -38,6 +42,7 @@ export default defineComponent({
     TodoList,
     TodoItemAddForm,
     NormalButton,
+    TodoFetchLoading,
   },
 })
 </script>
@@ -76,6 +81,7 @@ html, body {
     flex: 1;
     overflow: scroll;
     padding: 0 15px 20px 30px;
+    position: relative;
   }
 
   #app-body {
@@ -86,6 +92,7 @@ html, body {
       font-size: 28px;
       font-family: 'noto-sans-bold';
       margin-bottom: 38px;
+      color: var(--black);
     }
   }
 }

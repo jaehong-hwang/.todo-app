@@ -40,10 +40,10 @@ const pageList = ref({
 });
 
 const setCurrentPage = (menu: Directory) => {
+  currentPage.value = menu
+
   setCurrentDirectory(menu.value)
   fetchTodoList()
-
-  currentPage.value = menu
 }
 
 setCurrentPage(pageList.value.index[0])
