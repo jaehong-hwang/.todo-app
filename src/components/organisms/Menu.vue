@@ -18,7 +18,7 @@
       <MenuSections
         v-for="(item, k) in pageList"
         :key="k"
-        :title="k === 'index' ? '' : k"
+        :title="String(k) === 'index' ? '' : String(k)"
         :menu="item"
       />
     </div>

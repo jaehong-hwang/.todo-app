@@ -2,7 +2,7 @@
   <div id="wrap">
     <Menu />
     <section id="app-wrap">
-      <TodoFetchLoading v-if="fetchTodoLoading" />
+      <TodoFetchLoading v-if="fetchTodoLoading" :progress="progress" />
       <Header/>
       <section id="app-body">
         <h2 id="app-body-title">{{ currentPage.name }}</h2>
@@ -29,11 +29,13 @@ import TodoFetchLoading from '@/components/molecules/TodoFetchLoading.vue'
 export default defineComponent({
   setup() {
     const isAdding = ref(false)
+    const progress = ref(0)
 
     return {
       isAdding,
       currentPage,
       fetchTodoLoading,
+      progress,
     }
   },
   components: {

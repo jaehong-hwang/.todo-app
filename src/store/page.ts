@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { directoryFetch, setCurrentDirectory, currentDirectory, fetchTodoList } from '@/todo'
 
 const currentPage = ref({} as Directory)
