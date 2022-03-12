@@ -38,3 +38,5 @@ interface Window {
 }
 
 type Size = "medium"|"small"|"big"
+
+type StoreType = {[k: string]: any}

@@ -9,7 +9,7 @@ const dialog = electron.dialog
 module.exports = function run_script(command, args, callback) {
   const cmd = command + ' ' + args.join(' ')
   return new Promise((resolve, reject) => {
-    return child_process.exec(cmd, {
+    child_process.exec(cmd, {
       cwd: '/Users/jaehong/.jaehong/bin',
     }, (err, stdout) => {
       if (err) {
