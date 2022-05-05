@@ -1,18 +1,12 @@
-import { useState } from 'react'
-import styled from 'styled-components'
+import Button from './components/Button'
 
 const App = () => {
   return (
-    <AppWrapper>
+    <section>
       <header>1234</header>
-    </AppWrapper>
+      <Button>button test</Button>
+    </section>
   )
 }
-
-const AppWrapper = styled.article`
-  width: 100vw;
-  height: 100vh;
-  background: #000;
-`
 
 export default App
