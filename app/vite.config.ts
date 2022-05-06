@@ -7,7 +7,7 @@ export default defineConfig({
   root: __dirname,
   plugins: [esmodule(['execa'])],
   build: {
-    outDir: '../../dist/main',
+    outDir: '../dist/main',
     emptyOutDir: true,
     minify: process.env./* from mode option */ NODE_ENV === 'production',
     sourcemap: true,
