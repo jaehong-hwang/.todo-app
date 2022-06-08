@@ -1,19 +1,15 @@
 {
+  "extends": "./paths.json",
   "compilerOptions": {
-    "target": "esnext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "typeRoots": ["./node_modules/@types", "src/@types"],
-    "paths": {
-      "@/*": ["./src/*"],
-    }
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "strict": true,
+    "jsx": "react-jsx"
+  }
 }
